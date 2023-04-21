@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @SpringBootApplication
 @MapperScan("com.mooc.sb2.mapper")
 @EnableCaching
+//@EnableScheduling // 开起定时任务
 public class Sb2Application {
 
     public static void main(String[] args) {

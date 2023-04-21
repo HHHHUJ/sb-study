@@ -4,6 +4,27 @@ package com.mooc.sb2.bean;
  * 商品数据对象
  */
 public class GoodsDo {
+    /**
+     * 商品id
+     */
+    private Long id;
+    /**
+     * 商品名称
+     */
+    private String name;
+    /**
+     * 商品数量
+     */
+    private Long num;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -12,32 +33,11 @@ public class GoodsDo {
         this.name = name;
     }
 
-    public String getPrice() {
-        return price;
+    public Long getNum() {
+        return num;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setNum(Long num) {
+        this.num = num;
     }
-
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
-    }
-
-    /**
-     * 商品名称
-     */
-    private String name;
-    /**
-     * 商品价格
-     */
-    private String price;
-    /**
-     * 商品图片
-     */
-    private String pic;
 }

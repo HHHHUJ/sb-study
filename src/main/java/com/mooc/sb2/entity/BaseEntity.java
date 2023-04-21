@@ -3,14 +3,12 @@ package com.mooc.sb2.entity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mooc.sb2.bean.BeanHelper;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
+@Data
 @Slf4j
 public abstract class BaseEntity implements Serializable {
 
@@ -50,7 +48,7 @@ public abstract class BaseEntity implements Serializable {
 //    /**
 //     * 删除标记（0：正常；1：删除；）
 //     */
-//    protected Integer delFlag = 0;
+    protected Integer delFlag = 0;
 //
 //    /**
 //     * 备注

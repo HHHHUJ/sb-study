@@ -2,10 +2,10 @@ package com.mooc.sb2.controller;
 
 import com.mooc.sb2.bean.User;
 import com.mooc.sb2.service.UserService;
+import com.mooc.sb2.web.ResultInfo;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -13,44 +13,24 @@ public class UserController {
     @Resource
     private UserService userService;
     @GetMapping("/findById/{id}")
-    public HashMap findById(@PathVariable("id") Integer id) {
-        HashMap<String, Object> stringObjectHashMap = new HashMap<>();
-        User result = this.userService.findById(id);
-        stringObjectHashMap.put("success", true);
-        stringObjectHashMap.put("data", result);
-        return stringObjectHashMap;
+    public ResultInfo<User> findById(@PathVariable("id") Integer id) {
+        return ResultInfo.success(userService.findById(id));
     }
     @GetMapping("findAll")
-    public HashMap findAll() {
-        HashMap<String, Object> stringObjectHashMap = new HashMap<>();
-        List<User> result = this.userService.findAll();
-        stringObjectHashMap.put("success", true);
-        stringObjectHashMap.put("data", result);
-        return stringObjectHashMap;
+    public ResultInfo<List<User>> findAll() {
+        return ResultInfo.success(userService.findAll());
     }
     @PostMapping("save")
-    public HashMap save(@RequestBody User user) {
-        System.out.println(user);
-        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
-        Integer result = this.userService.save(user);
-        objectObjectHashMap.put("success", true);
-        objectObjectHashMap.put("data", result);
-        return objectObjectHashMap;
+    public ResultInfo<Integer> save(@RequestBody User user) {
+        return ResultInfo.success(userService.save(user));
     }
     @DeleteMapping("delete")
-    public HashMap delete(Integer id) {
-        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
-        this.userService.delete(id);
-        objectObjectHashMap.put("success", true);
-        objectObjectHashMap.put("data", 0);
-        return objectObjectHashMap;
+    public ResultInfo<Void> delete(Integer id) {
+        userService.delete(id);
+        return ResultInfo.success();
     }
     @PostMapping("update")
-    public HashMap update(@RequestBody User user) {
-        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
-        Integer result = this.userService.update(user);
-        objectObjectHashMap.put("success", true);
-        objectObjectHashMap.put("data", result);
-        return objectObjectHashMap;
+    public ResultInfo<Integer> update(@RequestBody User user) {
+        return ResultInfo.success(userService.update(user));
     }
 }
